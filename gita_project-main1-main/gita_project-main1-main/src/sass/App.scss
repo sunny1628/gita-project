@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@mixin respond($breakpoint) {
+  @if $breakpoint==tab-port {
+    @media (max-width: 62em) {
+      @content;
+    } //992em
+  }
+
+  @if $breakpoint==big-desktop {
+    @media (min-width: 112.5em) {
+      @content;
+    } //1800px
+  }
+}
+
+#page1__section--vid {
+  background-image: url("../assets//ball_gif.gif");
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+body {
+  background-color: black;
+  hyphens: auto;
+}
+.page1__section {
+  &--vid {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+    .vid__bottom {
+      position: fixed;
+      top: -10rem;
+      width: 140rem;
+      height: auto;
+
+      @include respond(tab-port) {
+        height: 100vh;
+        object-fit: cover;
+        top: 0;
+      }
+    }
+  }
+
+  .search-bar {
+    position: absolute;
+    width: 37%;
+    border-radius: 2rem;
+    padding: 1rem;
+    background-color: white;
+    height: 4rem;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    input {
+      font-size: 1.7rem;
+      width: 81%;
+      border: none;
+
+      &:focus,
+      &:active {
+        border: none;
+        outline: none;
+      }
+
+      @include respond(tab-port) {
+        font-size: 4rem;
+      }
+    }
+
+    @include respond(tab-port) {
+      width: 80%;
+      height: 8rem;
+      bottom: 10rem;
+    }
+  }
+}
+
+.custom-cursor {
+  img {
+    filter: drop-shadow(10px 10px 70px rgb(247, 182, 85));
+  }
+
+  .scroll-img {
+    width: 85%;
+    transition: all 0.2s;
+    @include respond(tab-port) {
+      mix-blend-mode: screen;
+      width: 100%;
+    }
+  }
+}
+
+.god__img {
+  position: absolute;
+  top: 0;
+  left: 0%;
+  width: 1440px;
+
+  overflow: hidden;
+  height: 100vh;
+}
